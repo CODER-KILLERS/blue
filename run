@@ -687,5 +687,7 @@ H = '\x1b[1;37m'
 #------->login token jangan lupa masukin token facebook jangan token listrik kontol<-------#    
 			
 if __name__ == '__main__':
+	
 	xxnx()
+	banner()
 	pilihlogin()
