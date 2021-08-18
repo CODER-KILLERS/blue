@@ -41,7 +41,7 @@ def random_ipv4():
 def random_ipv6():
 	return ipaddress.IPv6Address._string_from_ip_int(random.randint(0, MAX_IPV6))
 
-def banner():                
+def logo():                
 	print
 	print
 	print
