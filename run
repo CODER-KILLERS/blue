@@ -338,7 +338,7 @@ def menu():
 	except requests.exceptions.ConnectionError:
 		print ('  [!] Tidak Ada Koneksi')
 		sys.exit()
-	logo()
+	banner()
 	print
 	print
 	print" \33[3;1m\033[1;97mSelamat datang......\33[0;1m\033"
