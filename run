@@ -481,20 +481,14 @@ def pilih_india():
 						ttl = data['birthday'].replace("/","-")
 						print('\r\033[0;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m ' +uid+ ' \033[1;96m◊\033[1;97m ' + pw + ' \033[1;96m◊\033[1;97m ' + ttl)
 						cp.append(uid+'|'+pw+'|'+ttl)
-						save = open('out/CP-%s-%s-%s.txt' % (ha, op, ta),'a')
-						save.write('\033[0;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m '+str(uid)+' \033[1;96m◊\033[1;97m '+str(pw)+' \033[1;96m◊\033[1;97m '+ttl+'\n')
 						open("CP/%s.txt"%(tanggal),"a").write("%s|%s|%s\n"%(uid, pw, ttl))
-						save.close()
 						break
 					except(KeyError, IOError):
 						ttl = ' '
 					except:pass
 					print '\r\033[0;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m ' +uid+ ' \033[1;96m◊\033[1;97m ' + pw + '        '
 					cp.append(uid+'|'+pw)
-					save = open('out/CP-%s-%s-%s.txt' % (ha, op, ta),'a')
-					save.write('\033[0;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m '+str(uid)+' \033[1;96m◊\033[1;97m '+str(pw)+'\n')
-					open("CP/%s.txt"%(tanggal),"a").write(" %s|%s\n"%(uid, pw))
-					save.close()
+					open("CP/%s.txt"%(tanggal),"a").write("%s|%s\n"%(uid, pw))
 					break
 					continue
 			
@@ -561,21 +555,15 @@ def manual():
 						nama = data['name']
 						ttl = data['birthday'].replace("/","-")
 						print('\r\033[0;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m ' +uid+ ' \033[1;92m◊\033[1;97m ' + asu + ' \033[1;92m◊\033[1;97m ' + ttl)
-						cp.append(uid+'|'+asu+'|'+ttl)
-						save = open('out/CP-%s-%s-%s.txt' % (ha, op, ta),'a')
-						save.write('\033[0;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m '+str(uid)+' \033[1;96m◊\033[1;97m '+str(pw)+'\n')
-						open("CP/%s.txt"%(tanggal),"a").write("%s|%s|%s\n"%(uid, asu, ttl))
-						save.close()
+						cp.append(uid+'|'+pw+'|'+ttl)
+						open("CP/%s.txt"%(tanggal),"a").write("%s|%s|%s\n"%(uid, pw, ttl))
 						break
 					except(KeyError, IOError):
 						ttl = ' '
 					except:pass
 					print '\r\033[0;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m ' +uid+ ' \033[1;96m◊\033[1;97m ' + asu + '        '
-					cp.append(uid+'|'+asu)
-					save = open('out/CP-%s-%s-%s.txt' % (ha, op, ta),'a')
-					save.write('\033[0;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m '+str(uid)+' \033[1;96m◊\033[1;97m '+str(pw)+'\n')
-					open("CP/%s.txt"%(tanggal),"a").write(" %s|%s\n"%(uid, asu))
-					save.close()
+					cp.append(uid+'|'+pw)
+					open("CP/%s.txt"%(tanggal),"a").write("%s|%s\n"%(uid, pw))
 					break
 					continue
 			
