@@ -648,7 +648,7 @@ def jalan(z):
 		sys.stdout.flush()
 		time.sleep(0.03)
 		
-def xnxx():
+def logo():
 	time.sleep (0.01)
  	print('')
   	print('')
