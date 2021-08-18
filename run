@@ -41,7 +41,7 @@ def random_ipv4():
 def random_ipv6():
 	return ipaddress.IPv6Address._string_from_ip_int(random.randint(0, MAX_IPV6))
 
-def logo():                
+def banner():                
 	print
 	print
 	print
@@ -338,7 +338,7 @@ def menu():
 	except requests.exceptions.ConnectionError:
 		print ('  [!] Tidak Ada Koneksi')
 		sys.exit()
-	banner()
+	logo()
 	print
 	print
 	print" \33[3;1m\033[1;97mSelamat datang......\33[0;1m\033"
