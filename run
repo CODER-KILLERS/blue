@@ -676,5 +676,4 @@ H = '\x1b[1;37m'
 			
 if __name__ == '__main__':
 	xnxx()
-	xxnx()
 	pilihlogin()
