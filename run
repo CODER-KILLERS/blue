@@ -424,8 +424,8 @@ def pilih_india():
 		buatngecek()
 	elif ask == "6" or ask == "06":
 		print
-		print("\033[1;96m [\033[1;97m1\033[1;96m]\033[1;97m Cek ID publik ")
-		print("\033[1;96m [\033[1;97m2\033[1;96m]\033[1;97m Cek ID followers ")
+		print("\033[1;96m [\033[1;97m1\033[1;96m]\033[1;97m Cek ID teman ")
+		print("\033[1;96m [\033[1;97m2\033[1;96m]\033[1;97m Cek ID publik ")
 		d = raw_input("\n\033[1;96m [\033[1;97m?\033[1;96m] \033[1;96mpilih \033[1;96m:\033[1;93m ")
 		if d =='': 
 			exit()
