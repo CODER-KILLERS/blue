@@ -817,7 +817,7 @@ def jalan(z):
 	for e in z + '\n':
 		sys.stdout.write(e)
 		sys.stdout.flush()
-		time.sleep(0.03)
+		time.sleep(0.01)
 		
 def logo():
 	time.sleep (0.01)
